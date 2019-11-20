@@ -54,3 +54,7 @@ Execute the following command to apply `isort` and `black` formatting:
 ```bash
 make format
 ```
+
+## License
+
+This project is licensed under the terms of the {{cookiecutter.open_source_license}}.
