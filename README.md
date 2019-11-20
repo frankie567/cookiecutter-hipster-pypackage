@@ -25,14 +25,12 @@ The generator will automatically call `pipenv install --dev` at the end.
 Then, for the GitHub Actions pipelines to work correctly, you should:
 
 * Enable the GitHub repository in Codecov
-* (Optional, but recommended) the GitHub repository in Dependabot
+* (Optional, but recommended) Enable the GitHub repository in Dependabot
 * Setup a deploy key as explained here: https://github.com/marketplace/actions/github-pages-action#1-add-ssh-deploy-key
 * Set the following **Secrets** in your GitHub repository settings:
     * `CODECOV_TOKEN`: the Codecov repository upload token, which you can find in the Codecov settings of the corresponding project
     * `FLIT_USERNAME`: Your PyPi username
     * `FLIT_PASSWORD`: Your PyPi password
-
-Once a first **documentation pipeline** has passed, you can set the GitHub Pages source to the `gh-pages` branch in your GitHub repository settings.
 
 ## License
 
