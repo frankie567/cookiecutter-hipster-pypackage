@@ -2,7 +2,7 @@ site_name: {{cookiecutter.project_name}}
 site_description: {{cookiecutter.project_short_description}}
 
 theme:
-  name: 'material'
+  name: material
   palette:
     primary: {{cookiecutter.docs_color_primary}}
     accent: {{cookiecutter.docs_color_accent}}
