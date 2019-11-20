@@ -1,0 +1,25 @@
+site_name: {{cookiecutter.project_name}}
+site_description: {{cookiecutter.project_short_description}}
+
+theme:
+  name: 'material'
+  palette:
+    primary: {{cookiecutter.docs_color_primary}}
+    accent: {{cookiecutter.docs_color_accent}}
+
+repo_name: {{cookiecutter.repository_name}}
+repo_url: {{cookiecutter.repository_url}}
+edit_uri: ""
+
+markdown_extensions:
+  - markdown_include.include:
+      base_path: docs
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist
+
+nav:
+  - About: index.md

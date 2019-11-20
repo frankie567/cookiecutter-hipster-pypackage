@@ -1,0 +1,24 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "{{cookiecutter.package_name}}"
+dist-name = "{{cookiecutter.dist_name}}"
+author = "{{cookiecutter.full_name}}"
+author-email = "{{cookiecutter.email}}"
+home-page = "{{cookiecutter.repository_url}}"
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3 :: Only",
+]
+description-file = "README.md"
+requires-python = ">=3.7"
+requires = [
+]
+
+[tool.flit.metadata.requires-extra]
+
+[tool.flit.metadata.urls]
+Documentation = "{{cookiecutter.docs_url}}"
