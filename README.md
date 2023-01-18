@@ -24,9 +24,9 @@ The generator will automatically call `hatch env create` at the end.
 
 Then, for the GitHub Actions pipelines to work correctly, you should:
 
-* Enable the GitHub repository in Codecov
-* Set `CODECOV_TOKEN` in your GitHub repository secrets. Uou can find in the Codecov settings of the corresponding project
-* [Create a token](https://pypi.org/help/#apitoken) for your PyPI account and set the following secrets:
+* Enable the GitHub repository in Codecov.
+* Set `CODECOV_TOKEN` in your GitHub repository secrets. You can find in the Codecov settings of the corresponding project.
+* [Create a token](https://pypi.org/help/#apitoken) for your PyPI account and set the following GitHub repository secrets:
     * `HATCH_INDEX_USER`: `__token__`
     * `HATCH_INDEX_AUTH`: Your API token
 
