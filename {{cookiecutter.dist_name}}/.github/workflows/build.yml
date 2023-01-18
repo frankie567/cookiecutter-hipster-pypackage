@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: [3.7, 3.8, 3.9, '3.10', '3.11']
+        python_version: ['{{ cookiecutter.python_version }}']
 
     steps:
     - uses: actions/checkout@v3
@@ -43,7 +43,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.7
+        python-version: '{{ cookiecutter.python_version }}'
     - name: Install dependencies
       shell: bash
       run: |
@@ -60,6 +60,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         draft: true
-        body: ${{ github.event.head_commit.message }}
+        body: {% raw %}${{ github.event.head_commit.message }}{% endraw %}
         artifacts: dist/*.whl,dist/*.tar.gz
         token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}

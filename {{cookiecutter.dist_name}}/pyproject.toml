@@ -16,6 +16,7 @@ commit_extra_args = ["-e"]
 path = "{{ cookiecutter.package_name }}/__init__.py"
 
 [tool.hatch.envs.default]
+python = "{{ cookiecutter.python_version }}"
 dependencies = [
     "black",
     "mypy",
@@ -57,7 +58,7 @@ dynamic = ["version"]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
-requires-python = ">=3.7"
+requires-python = ">={{ cookiecutter.python_version }}"
 dependencies = [
 ]
 
