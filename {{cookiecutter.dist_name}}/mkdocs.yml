@@ -1,25 +1,57 @@
-site_name: {{cookiecutter.project_name}}
-site_description: {{cookiecutter.project_short_description}}
+site_name: {{ cookiecutter.project_name }}
+site_description: {{ cookiecutter.project_short_description }}
+
+repo_url: {{ cookiecutter.repository_url }}
+repo_name: {{ cookiecutter.repository_name }}
 
 theme:
-  name: material
-  palette:
-    primary: {{cookiecutter.docs_color_primary}}
-    accent: {{cookiecutter.docs_color_accent}}
+    name: material
+    icon:
+        logo: {{ cookiecutter.docs_icon }}
+    palette:
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: {{ cookiecutter.docs_color_primary }}
+          accent: {{ cookiecutter.docs_color_accent }}
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
 
-repo_name: {{cookiecutter.repository_name}}
-repo_url: {{cookiecutter.repository_url}}
-edit_uri: ""
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: {{ cookiecutter.docs_color_primary }}
+          accent: {{ cookiecutter.docs_color_accent }}
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
 
 markdown_extensions:
-  - markdown_include.include:
-      base_path: docs
-  - toc:
-      permalink: true
-  - admonition
-  - codehilite
-  - pymdownx.superfences
-  - pymdownx.tasklist
+    - toc:
+        permalink: true
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+
+plugins:
+    - search
+    - mkdocstrings:
+        handlers:
+            python:
+                import:
+                    - https://docs.python.org/3.7/objects.inv
+                options:
+                    docstring_style: google
+
+watch:
+    - {{ cookiecutter.package_name }}
 
 nav:
-  - About: index.md
+    - About: index.md
+    - Reference:
+        - {{ cookiecutter.package_name }}: reference/{{ cookiecutter.package_name }}.md

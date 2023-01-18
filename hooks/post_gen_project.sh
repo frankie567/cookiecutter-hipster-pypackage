@@ -1,5 +1,5 @@
-#! /bin/sh
+#! /bin/bash
 
 set -e
 
-pipenv install --dev
+hatch env create

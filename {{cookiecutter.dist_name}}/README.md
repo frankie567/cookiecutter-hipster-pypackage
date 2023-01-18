@@ -6,7 +6,6 @@
 
 [![build]({{cookiecutter.repository_url}}/workflows/Build/badge.svg)]({{cookiecutter.repository_url}}/actions)
 [![codecov](https://codecov.io/gh/{{cookiecutter.repository_name}}/branch/master/graph/badge.svg)](https://codecov.io/gh/{{cookiecutter.repository_name}})
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo={{cookiecutter.repository_name}})](https://dependabot.com)
 [![PyPI version](https://badge.fury.io/py/{{cookiecutter.dist_name}}.svg)](https://badge.fury.io/py/{{cookiecutter.dist_name}})
 
 ---
@@ -19,40 +18,24 @@
 
 ## Development
 
-### Setup environement
+### Setup environment
 
-You should have [Pipenv](https://pipenv.readthedocs.io/en/latest/) installed. Then, you can install the dependencies with:
-
-```bash
-pipenv install --dev
-```
-
-After that, activate the virtual environment:
-
-```bash
-pipenv shell
-```
+We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
 
 ### Run unit tests
 
 You can run all the tests with:
 
 ```bash
-make test
-```
-
-Alternatively, you can run `pytest` yourself:
-
-```bash
-pytest
+hatch run test
 ```
 
 ### Format the code
 
-Execute the following command to apply `isort` and `black` formatting:
+Execute the following command to apply linting and check typing:
 
 ```bash
-make format
+hatch run lint
 ```
 
 ## License

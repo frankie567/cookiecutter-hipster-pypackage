@@ -1,24 +1,66 @@
-[build-system]
-requires = ["flit_core >=2,<3"]
-build-backend = "flit_core.buildapi"
+[tool.ruff]
+extend-select = ["I"]
 
-[tool.flit.metadata]
-module = "{{cookiecutter.package_name}}"
-dist-name = "{{cookiecutter.dist_name}}"
-author = "{{cookiecutter.full_name}}"
-author-email = "{{cookiecutter.email}}"
-home-page = "{{cookiecutter.repository_url}}"
+[tool.pytest.ini_options]
+addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
+asyncio_mode = "strict"
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
+path = "{{ cookiecutter.package_name }}/__init__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "black",
+    "mypy",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+lint = [
+  "black .",
+  "ruff --fix .",
+  "mypy {{ cookiecutter.package_name }}/",
+]
+lint-check = [
+  "black --check .",
+  "ruff .",
+  "mypy {{ cookiecutter.package_name }}/",
+]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ cookiecutter.dist_name }}"
+authors = [
+  { name = "{{ cookiecutter.dist_name }}", email = "{{ cookiecutter.email }}" }
+]
+description = "{{ cookiecutter.project_short_description }}"
+readme = "README.md"
+dynamic = ["version"]
 classifiers = [
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3 :: Only",
 ]
-description-file = "README.md"
 requires-python = ">=3.7"
-requires = [
+dependencies = [
 ]
 
-[tool.flit.metadata.requires-extra]
-
-[tool.flit.metadata.urls]
-Documentation = "{{cookiecutter.docs_url}}"
+[project.urls]
+Documentation = "{{ cookiecutter.docs_url }}"
+Source = "{{ cookiecutter.repository_url }}"
