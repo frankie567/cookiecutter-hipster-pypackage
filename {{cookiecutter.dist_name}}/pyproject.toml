@@ -3,7 +3,9 @@ extend-select = ["I"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
+{% if cookiecutter.asyncio == "Y" -%}
 asyncio_mode = "strict"
+{%- endif %}
 
 [tool.hatch]
 
@@ -25,6 +27,9 @@ dependencies = [
     "pytest-cov",
     "mkdocs-material",
     "mkdocstrings[python]",
+    {% if cookiecutter.asyncio == "Y" -%}
+    "pytest-asyncio",
+    {%- endif %}
 ]
 
 [tool.hatch.envs.default.scripts]
