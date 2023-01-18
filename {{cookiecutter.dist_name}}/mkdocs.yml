@@ -49,6 +49,7 @@ plugins:
                     docstring_style: google
 
 watch:
+    - docs
     - {{ cookiecutter.package_name }}
 
 nav:

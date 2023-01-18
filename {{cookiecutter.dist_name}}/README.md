@@ -58,6 +58,16 @@ Your default Git text editor will open so you can add information about the rele
 
 When you push the tag on GitHub, the workflow will automatically publish it on PyPi and a GitHub release will be created as draft.
 
+## Serve the documentation
+
+You can serve the Mkdocs documentation with:
+
+```bash
+hatch run docs-serve
+```
+
+It'll automatically watch for changes in your code.
+
 ## License
 
 This project is licensed under the terms of the {{cookiecutter.open_source_license}}.
