@@ -38,6 +38,26 @@ Execute the following command to apply linting and check typing:
 hatch run lint
 ```
 
+### Publish a new version
+
+You can bump the version, create a commit and associated tag with one command:
+
+```bash
+hatch version patch
+```
+
+```bash
+hatch version minor
+```
+
+```bash
+hatch version major
+```
+
+Your default Git text editor will open so you can add information about the release.
+
+When you push the tag on GitHub, the workflow will automatically publish it on PyPi and a GitHub release will be created as draft.
+
 ## License
 
 This project is licensed under the terms of the {{cookiecutter.open_source_license}}.
