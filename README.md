@@ -30,6 +30,14 @@ Then, for the GitHub Actions pipelines to work correctly, you should:
     * `HATCH_INDEX_USER`: `__token__`
     * `HATCH_INDEX_AUTH`: Your API token
 
+### With cruft
+
+[cruft](https://github.com/cruft/cruft) is a layer above Cookiecutter allowing you to update your project from the template after it has been generated.
+
+```bash
+cruft create https://github.com/frankie567/cookiecutter-hipster-pypackage
+```
+
 ## License
 
 This project is licensed under the terms of the MIT license.
