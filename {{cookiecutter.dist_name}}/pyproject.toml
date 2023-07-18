@@ -1,5 +1,6 @@
 [tool.ruff]
-extend-select = ["I"]
+target-version = "py{{ cookiecutter.python_version | replace(".", "") }}"
+extend-select = ["I", "TRY", "UP"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
