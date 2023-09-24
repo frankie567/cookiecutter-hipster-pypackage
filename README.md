@@ -14,6 +14,12 @@ Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitH
 
 ## Quickstart
 
+Ensure you have `hatch` installed:
+
+```bash
+pip install hatch
+```
+
 Generate the project:
 
 ```bash
