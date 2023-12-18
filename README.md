@@ -6,7 +6,7 @@ Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitH
 
 * [X] Lightweight starter
 * [X] [Hatch](https://hatch.pypa.io/latest/install/) package management
-* [X] Linting and formatting with [`ruff`](https://github.com/charliermarsh/ruff) and [`black`](https://github.com/psf/black)
+* [X] Linting and formatting with [`ruff`](https://github.com/charliermarsh/ruff)
 * [X] Type checking with [`mypy`](https://github.com/python/mypy)
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).

@@ -21,7 +21,6 @@ path = "{{ cookiecutter.package_name }}/__init__.py"
 [tool.hatch.envs.default]
 python = "{{ cookiecutter.python_version }}"
 dependencies = [
-    "black",
     "mypy",
     "ruff",
     "pytest",
@@ -37,12 +36,12 @@ dependencies = [
 test = "pytest"
 test-cov-xml = "pytest --cov-report=xml"
 lint = [
-  "black .",
+  "ruff format .",
   "ruff --fix .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
 lint-check = [
-  "black --check .",
+  "ruff format --check .",
   "ruff .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
