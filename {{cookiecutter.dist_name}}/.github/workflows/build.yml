@@ -11,9 +11,9 @@ jobs:
         python_version: ['{{ cookiecutter.python_version }}']
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
     - name: Install dependencies
@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run: |
         hatch run test-cov-xml
-    - uses: codecov/codecov-action@v3
+    - uses: codecov/codecov-action@v4
       with:
         token: {% raw %}${{ secrets.CODECOV_TOKEN }}{% endraw %}
         fail_ci_if_error: true
@@ -41,9 +41,9 @@ jobs:
         contents: write
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '{{ cookiecutter.python_version }}'
     - name: Install dependencies
