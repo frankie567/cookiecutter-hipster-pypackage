@@ -73,7 +73,7 @@ jobs:
     - name: Build and publish on PyPI
       env:
         HATCH_INDEX_USER: __token__
-        HATCH_INDEX_AUTH: ${{ steps.mint-token.outputs.api-token }}
+        HATCH_INDEX_AUTH: {% raw %}${{ steps.mint-token.outputs.api-token }}{% endraw %}
       run: |
         hatch build
         hatch publish
