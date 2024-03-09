@@ -35,10 +35,12 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    environment: release
     needs: test
     if: startsWith(github.ref, 'refs/tags/')
     permissions:
         contents: write
+        id-token: write
 
     steps:
     - uses: actions/checkout@v4
@@ -51,10 +53,27 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install hatch
+    - name: mint API token
+      id: mint-token
+      run: |
+        # retrieve the ambient OIDC token
+        resp=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+        "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=pypi")
+        oidc_token=$(jq -r '.value' <<< "${resp}")
+
+        # exchange the OIDC token for an API token
+        resp=$(curl -X POST https://pypi.org/_/oidc/mint-token -d "{\"token\": \"${oidc_token}\"}")
+        api_token=$(jq -r '.token' <<< "${resp}")
+
+        # mask the newly minted API token, so that we don't accidentally leak it
+        echo "::add-mask::${api_token}"
+
+        # see the next step in the workflow for an example of using this step output
+        echo "api-token=${api_token}" >> "${GITHUB_OUTPUT}"
     - name: Build and publish on PyPI
       env:
-        HATCH_INDEX_USER: {% raw %}${{ secrets.HATCH_INDEX_USER }}{% endraw %}
-        HATCH_INDEX_AUTH: {% raw %}${{ secrets.HATCH_INDEX_AUTH }}{% endraw %}
+        HATCH_INDEX_USER: __token__
+        HATCH_INDEX_AUTH: ${{ steps.mint-token.outputs.api-token }}
       run: |
         hatch build
         hatch publish

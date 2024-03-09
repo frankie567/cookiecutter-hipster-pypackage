@@ -26,9 +26,7 @@ Then, for the GitHub Actions pipelines to work correctly, you should:
 
 * Enable the GitHub repository in Codecov.
 * Set `CODECOV_TOKEN` in your GitHub repository secrets. You can find in the Codecov settings of the corresponding project.
-* [Create a token](https://pypi.org/help/#apitoken) for your PyPI account and set the following GitHub repository secrets:
-    * `HATCH_INDEX_USER`: `__token__`
-    * `HATCH_INDEX_AUTH`: Your API token
+* Configure the [Trusted Publisher method on PyPI](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/): it's a modern and secure method to push your package to PyPI.
 
 ### With cruft
 
