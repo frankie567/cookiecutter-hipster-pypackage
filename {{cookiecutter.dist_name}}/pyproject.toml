@@ -7,6 +7,7 @@ extend-select = ["I", "TRY", "UP"]
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
 {% if cookiecutter.asyncio == "Y" -%}
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "strict"
 {%- endif %}
 
@@ -21,6 +22,7 @@ commit_extra_args = ["-e"]
 path = "{{ cookiecutter.package_name }}/__init__.py"
 
 [tool.hatch.envs.default]
+installer = "uv"
 python = "{{ cookiecutter.python_version }}"
 dependencies = [
     "mypy",
@@ -39,12 +41,12 @@ test = "pytest"
 test-cov-xml = "pytest --cov-report=xml"
 lint = [
   "ruff format .",
-  "ruff --fix .",
+  "ruff check --fix .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
 lint-check = [
   "ruff format --check .",
-  "ruff .",
+  "ruff check .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
 docs-serve = "mkdocs serve"
@@ -64,6 +66,7 @@ readme = "README.md"
 dynamic = ["version"]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: {{ cookiecutter.python_version }}",
 ]
 requires-python = ">={{ cookiecutter.python_version }}"
 dependencies = [

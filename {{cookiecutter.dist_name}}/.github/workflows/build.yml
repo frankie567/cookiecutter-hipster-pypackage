@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run: |
         hatch run test-cov-xml
-    - uses: codecov/codecov-action@v4
+    - uses: codecov/codecov-action@v5
       with:
         token: {% raw %}${{ secrets.CODECOV_TOKEN }}{% endraw %}
         fail_ci_if_error: true
