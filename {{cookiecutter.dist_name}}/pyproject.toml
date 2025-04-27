@@ -4,6 +4,15 @@ target-version = "py{{ cookiecutter.python_version | replace(".", "") }}"
 [tool.ruff.lint]
 extend-select = ["I", "TRY", "UP"]
 
+[tool.mypy]
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+strict_equality = true
+disallow_untyped_defs = true
+
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
 {% if cookiecutter.async == "asyncio" -%}
