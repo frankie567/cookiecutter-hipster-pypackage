@@ -6,9 +6,10 @@ extend-select = ["I", "TRY", "UP"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
-{% if cookiecutter.asyncio == "Y" -%}
+{% if cookiecutter.async == "asyncio" -%}
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "strict"
+{% elif cookiecutter.async == "anyio" -%}
 {%- endif %}
 
 [tool.hatch]
@@ -31,7 +32,7 @@ dependencies = [
     "pytest-cov",
     "mkdocs-material",
     "mkdocstrings[python]",
-    {% if cookiecutter.asyncio == "Y" -%}
+    {% if cookiecutter.async == "asyncio" -%}
     "pytest-asyncio",
     {%- endif %}
 ]
@@ -70,6 +71,9 @@ classifiers = [
 ]
 requires-python = ">={{ cookiecutter.python_version }}"
 dependencies = [
+    {% if cookiecutter.async == "anyio" -%}
+    "anyio",
+    {%- endif %}
 ]
 
 [project.urls]
