@@ -1,16 +1,17 @@
 {
     "languages": {
         "Python": {
-            "language_servers": ["pyright", "ruff", "!pylsp"],
+            "language_servers": [
+                "pyright",
+                "ruff",
+                "!basedpyright",
+                "!pylsp"
+            ],
             "format_on_save": "on",
             "wrap_guides": [88],
             "formatter": [
-                {
-                    "code_actions": {
-                        "source.organizeImports.ruff": true,
-                        "source.fixAll.ruff": true
-                    }
-                },
+                { "code_action": "source.organizeImports.ruff" },
+                { "code_action": "source.fixAll.ruff" },
                 {
                     "language_server": {
                         "name": "ruff"
@@ -23,7 +24,7 @@
         "pyright": {
             "settings": {
                 "python": {
-                    "pythonPath": ".hatch/{{cookiecutter.dist_name}}/bin/python"
+                    "pythonPath": ".venv/bin/python"
                 }
             }
         }

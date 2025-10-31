@@ -20,14 +20,14 @@
 
 ### Setup environment
 
-We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
+We use [uv](https://docs.astral.sh/uv/) to manage the development environment and production build, and [just](https://github.com/casey/just) to manage command shortcuts. Ensure they are installed on your system.
 
 ### Run unit tests
 
 You can run all the tests with:
 
 ```bash
-hatch run test
+just test
 ```
 
 ### Format the code
@@ -35,7 +35,7 @@ hatch run test
 Execute the following command to apply linting and check typing:
 
 ```bash
-hatch run lint
+just lint
 ```
 
 ### Publish a new version
@@ -43,15 +43,15 @@ hatch run lint
 You can bump the version, create a commit and associated tag with one command:
 
 ```bash
-hatch version patch
+just version patch
 ```
 
 ```bash
-hatch version minor
+just version minor
 ```
 
 ```bash
-hatch version major
+just version major
 ```
 
 Your default Git text editor will open so you can add information about the release.
@@ -63,7 +63,7 @@ When you push the tag on GitHub, the workflow will automatically publish it on P
 You can serve the Mkdocs documentation with:
 
 ```bash
-hatch run docs-serve
+just docs-serve
 ```
 
 It'll automatically watch for changes in your code.

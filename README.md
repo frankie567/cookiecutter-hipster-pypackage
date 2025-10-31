@@ -1,16 +1,32 @@
 # Cookiecutter Hipster PyPackage
 
-Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitHub Actions and more!
+Cookiecutter template for a cutting-edge Python package: uv, just, ruff, mypy, GitHub Actions and more!
 
 ## Features
 
 * [X] Lightweight starter
-* [X] [Hatch](https://hatch.pypa.io/latest/install/) package management
+* [X] [uv](https://docs.astral.sh/uv/) for dependency management
+* [X] [just](https://github.com/casey/just) for command shortcuts
 * [X] Linting and formatting with [`ruff`](https://github.com/charliermarsh/ruff)
 * [X] Type checking with [`mypy`](https://github.com/python/mypy)
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).
 * [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines
+* [X] [GitHub Copilot instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot) for AI-assisted development
+
+## Design Choices
+
+### Modern Dependency Management with uv
+
+This template uses [uv](https://docs.astral.sh/uv/) for fast and reliable dependency management. uv is significantly faster than traditional pip and provides better dependency resolution. Dependencies are organized using [PEP 735 dependency groups](https://peps.python.org/pep-0735/), making it easy to manage development dependencies separately from production dependencies.
+
+### Command Shortcuts with just
+
+[just](https://github.com/casey/just) is a command runner that provides a simple way to organize and run project commands. It's similar to Make but easier to use and more portable. All common development tasks (testing, linting, documentation) are accessible through simple `just` commands.
+
+### AI-Assisted Development
+
+The template includes GitHub Copilot instructions that help AI assistants understand your project's coding standards and conventions. This makes it easier to maintain consistency when using AI-assisted development tools.
 
 ## Quickstart
 
@@ -20,7 +36,7 @@ Generate the project:
 cookiecutter https://github.com/frankie567/cookiecutter-hipster-pypackage
 ```
 
-The generator will automatically call `hatch env create` at the end.
+The generator will automatically call `uv sync` at the end to set up your development environment.
 
 Then, for the GitHub Actions pipelines to work correctly, you should:
 
