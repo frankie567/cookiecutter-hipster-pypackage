@@ -1,40 +1,14 @@
-[tool.ruff]
-target-version = "py{{ cookiecutter.python_version | replace(".", "") }}"
-
-[tool.ruff.lint]
-extend-select = ["I", "TRY", "UP"]
-
-[tool.mypy]
-warn_redundant_casts = true
-warn_unused_ignores = true
-disallow_any_generics = true
-check_untyped_defs = true
-no_implicit_reexport = true
-strict_equality = true
-disallow_untyped_defs = true
-
-[tool.pytest.ini_options]
-addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
-{% if cookiecutter.async == "asyncio" -%}
-asyncio_default_fixture_loop_scope = "function"
-asyncio_mode = "strict"
-{% elif cookiecutter.async == "anyio" -%}
-{%- endif %}
-
-[tool.hatch]
-
-[tool.hatch.metadata]
-allow-direct-references = true
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
 
 [tool.hatch.version]
 source = "regex_commit"
 commit_extra_args = ["-e"]
 path = "{{ cookiecutter.package_name }}/__init__.py"
 
-[tool.hatch.envs.default]
-installer = "uv"
-python = "{{ cookiecutter.python_version }}"
-dependencies = [
+[dependency-groups]
+dev = [
     "mypy",
     "ruff",
     "pytest",
@@ -46,25 +20,31 @@ dependencies = [
     {%- endif %}
 ]
 
-[tool.hatch.envs.default.scripts]
-test = "pytest"
-test-cov-xml = "pytest --cov-report=xml"
-lint = [
-  "ruff format .",
-  "ruff check --fix .",
-  "mypy {{ cookiecutter.package_name }}/",
-]
-lint-check = [
-  "ruff format --check .",
-  "ruff check .",
-  "mypy {{ cookiecutter.package_name }}/",
-]
-docs-serve = "mkdocs serve"
-docs-build = "mkdocs build"
+[tool.ruff]
+target-version = "py{{ cookiecutter.python_version | replace(".", "") }}"
 
-[build-system]
-requires = ["hatchling", "hatch-regex-commit"]
-build-backend = "hatchling.build"
+[tool.ruff.lint]
+extend-select = ["I", "TRY", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
+{% if cookiecutter.async == "asyncio" -%}
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "strict"
+{% elif cookiecutter.async == "anyio" -%}
+{%- endif %}
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.mypy]
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+strict_equality = true
+disallow_untyped_defs = true
 
 [project]
 name = "{{ cookiecutter.dist_name }}"
