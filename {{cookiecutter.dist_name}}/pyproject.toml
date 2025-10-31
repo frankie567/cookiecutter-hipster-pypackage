@@ -1,3 +1,27 @@
+
+[project]
+name = "{{ cookiecutter.dist_name }}"
+authors = [
+  { name = "{{ cookiecutter.dist_name }}", email = "{{ cookiecutter.email }}" }
+]
+description = "{{ cookiecutter.project_short_description }}"
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: {{ cookiecutter.python_version }}",
+]
+requires-python = ">={{ cookiecutter.python_version }}"
+dependencies = [
+    {% if cookiecutter.async == "anyio" -%}
+    "anyio",
+    {%- endif %}
+]
+
+[project.urls]
+Documentation = "{{ cookiecutter.docs_url }}"
+Source = "{{ cookiecutter.repository_url }}"
+
 [build-system]
 requires = ["hatchling", "hatch-regex-commit"]
 build-backend = "hatchling.build"
@@ -46,25 +70,5 @@ no_implicit_reexport = true
 strict_equality = true
 disallow_untyped_defs = true
 
-[project]
-name = "{{ cookiecutter.dist_name }}"
-authors = [
-  { name = "{{ cookiecutter.dist_name }}", email = "{{ cookiecutter.email }}" }
-]
-description = "{{ cookiecutter.project_short_description }}"
-readme = "README.md"
-dynamic = ["version"]
-classifiers = [
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: {{ cookiecutter.python_version }}",
-]
-requires-python = ">={{ cookiecutter.python_version }}"
-dependencies = [
-    {% if cookiecutter.async == "anyio" -%}
-    "anyio",
-    {%- endif %}
-]
-
-[project.urls]
-Documentation = "{{ cookiecutter.docs_url }}"
-Source = "{{ cookiecutter.repository_url }}"
+[tool.basedpyright]
+typeCheckingMode = "off"
