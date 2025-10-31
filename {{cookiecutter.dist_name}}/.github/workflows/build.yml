@@ -20,7 +20,7 @@ jobs:
             - name: Install uv and set the Python version
               uses: astral-sh/setup-uv@v7
               with:
-                  python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+                  python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
             - name: Install the project
               run: uv sync --all-extras --dev
             - name: Lint and typecheck

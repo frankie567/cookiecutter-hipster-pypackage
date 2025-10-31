@@ -7,7 +7,7 @@ This document provides essential guidance for AI agents contributing to {{cookie
 - Do not add comments to the code unless necessary. The code should be self-explanatory.
 - Use meaningful variable and function names.
 - Follow good practices and code conventions.
-- Make sure that all the new code is maintanable and follows the SOLID principles.
+- Make sure that all the new code is maintainable and follows the SOLID principles.
 - Do not modify unrelated code to the task or issue you are working on.
 
 ### Linting and testing
