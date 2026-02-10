@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions
+# Agent Instructions
 
 This document provides essential guidance for AI agents contributing to {{cookiecutter.project_name}}. Imagine this file as a new joiner to the team who needs to understand the coding standards, practices, and conventions used in this repository.
 
@@ -12,7 +12,7 @@ This document provides essential guidance for AI agents contributing to {{cookie
 
 ### Linting and testing
 
-The project requires to be linted and type-checked. To do so, run:
+The project needs to be linted and type-checked. To do so, run:
 
 ```bash
 just lint

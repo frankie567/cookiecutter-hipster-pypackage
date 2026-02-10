@@ -12,7 +12,7 @@ Cookiecutter template for a cutting-edge Python package: uv, just, ruff, mypy, G
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).
 * [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines
-* [X] [GitHub Copilot instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot) for AI-assisted development
+* [X] Agent instructions for AI-assisted development
 
 ## Design Choices
 
@@ -26,7 +26,7 @@ This template uses [uv](https://docs.astral.sh/uv/) for fast and reliable depend
 
 ### AI-Assisted Development
 
-The template includes GitHub Copilot instructions that help AI assistants understand your project's coding standards and conventions. This makes it easier to maintain consistency when using AI-assisted development tools.
+The template includes agent instructions that help AI assistants understand your project's coding standards and conventions. This makes it easier to maintain consistency when using AI-assisted development tools.
 
 ## Quickstart
 
