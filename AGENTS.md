@@ -12,7 +12,7 @@ This document provides essential guidance for AI agents contributing to {{cookie
 
 ### Linting and testing
 
-The project requires to be linted and type-checked. To do so, run:
+The project needs to be linted and type-checked. To do so, run:
 
 ```bash
 just lint
