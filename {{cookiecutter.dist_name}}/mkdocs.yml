@@ -49,7 +49,7 @@ plugins:
     - mkdocstrings:
         handlers:
             python:
-                import:
+                inventories:
                     - https://docs.python.org/{{ cookiecutter.python_version }}/objects.inv
                 options:
                     docstring_style: google
